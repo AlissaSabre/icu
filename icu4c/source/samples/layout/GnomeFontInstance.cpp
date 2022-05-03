@@ -105,9 +105,10 @@ GnomeFontInstance::~GnomeFontInstance()
 LEErrorCode GnomeFontInstance::initMapper()
 {
     LETag cmapTag = LE_CMAP_TABLE_TAG;
-    const CMAPTable *cmap = (const CMAPTable *) readFontTable(cmapTag);
+    size_t length;
+    const CMAPTable *cmap = (const CMAPTable *) readFontTable(cmapTag, length);
 
-    if (cmap == NULL) {
+    if (cmap == NULL || length < sizeof(CMAPTable)) {
         return LE_MISSING_FONT_TABLE_ERROR;
     }
 
@@ -120,21 +121,24 @@ LEErrorCode GnomeFontInstance::initMapper()
     return LE_NO_ERROR;
 }
 
-const void *GnomeFontInstance::getFontTable(LETag tableTag) const
+const void *GnomeFontInstance::getFontTable(LETag tableTag, size_t &length) const
 {
-    return FontTableCache::find(tableTag);
+    return FontTableCache::find(tableTag, length);
 }
 
-const void *GnomeFontInstance::readFontTable(LETag tableTag) const
+const void *GnomeFontInstance::readFontTable(LETag tableTag, size_t &length) const
 {
     FT_ULong len = 0;
     FT_Byte *result = NULL;
 
-    FT_Load_Sfnt_Table(fFace, tableTag, 0, NULL, &len);
+    FT_Error error = FT_Load_Sfnt_Table(fFace, tableTag, 0, NULL, &len);
 
-    if (len > 0) {
+    if (!error && len > 0) {
         result = LE_NEW_ARRAY(FT_Byte, len);
         FT_Load_Sfnt_Table(fFace, tableTag, 0, result, &len);
+        length = len;
+    } else {
+        length = 0;
     }
 
     return result;

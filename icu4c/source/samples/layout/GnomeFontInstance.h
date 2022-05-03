@@ -70,7 +70,7 @@ class GnomeFontInstance : public LEFontInstance, protected FontTableCache
 
     CMAPMapper *fMapper;
 
-    virtual const void *readFontTable(LETag tableTag) const;
+    virtual const void *readFontTable(LETag tableTag, size_t &length) const;
 
     virtual LEErrorCode initMapper();
 
@@ -79,7 +79,7 @@ class GnomeFontInstance : public LEFontInstance, protected FontTableCache
 
     virtual ~GnomeFontInstance();
 
-    virtual const void *getFontTable(LETag tableTag) const;
+    virtual const void *getFontTable(LETag tableTag, size_t &length) const;
 
     virtual le_int32 getUnitsPerEM() const;
 

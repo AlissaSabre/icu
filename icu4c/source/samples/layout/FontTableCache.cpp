@@ -94,7 +94,7 @@ void FontTableCache::add(LETag tableTag, const void *table, size_t length)
     }
 
     fTableCache[fTableCacheCurr].tag    = tableTag;
-    fTableCache[fTableCacheCurr].length = 0;
+    fTableCache[fTableCacheCurr].length = length;
     fTableCache[fTableCacheCurr].table  = table;
 
     fTableCacheCurr += 1;
