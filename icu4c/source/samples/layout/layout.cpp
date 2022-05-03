@@ -44,7 +44,7 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 TCHAR szAppName[] = TEXT(APP_NAME);
 
-void PrettyTitle(HWND hwnd, char *fileName)
+void PrettyTitle(HWND hwnd, const char *fileName)
 {
     char title[MAX_PATH + 64];
 
