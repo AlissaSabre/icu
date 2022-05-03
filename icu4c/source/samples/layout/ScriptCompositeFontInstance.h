@@ -87,7 +87,7 @@ public:
      */
     virtual LEGlyphID mapCharToGlyph(LEUnicode32 ch) const;
 
-    virtual const void *getFontTable(LETag tableTag) const;
+    virtual const void *getFontTable(LETag tableTag, size_t &length) const;
 
     virtual le_int32 getUnitsPerEM() const;
 
@@ -131,8 +131,9 @@ private:
     static const char fgClassID;
 };
 
-inline const void *ScriptCompositeFontInstance::getFontTable(LETag /*tableTag*/) const
+inline const void *ScriptCompositeFontInstance::getFontTable(LETag /*tableTag*/, size_t &length) const
 {
+    length = 0;
     return NULL;
 }
 

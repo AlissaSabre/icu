@@ -265,10 +265,12 @@ GDIFontInstance::GDIFontInstance(GDISurface *surface, const char *faceName, le_i
         const HEADTable *headTable = NULL;
         const HHEATable *hheaTable = NULL;
 
-        // read unitsPerEm from 'head' table
-        headTable = (const HEADTable *) readFontTable(LE_HEAD_TABLE_TAG);
+        size_t length;
 
-        if (headTable == NULL) {
+        // read unitsPerEm from 'head' table
+        headTable = (const HEADTable *) readFontTable(LE_HEAD_TABLE_TAG, length);
+
+        if (headTable == NULL || length < sizeof(HEADTable)) {
             status = LE_MISSING_FONT_TABLE_ERROR;
             goto restore;
         }
@@ -276,9 +278,9 @@ GDIFontInstance::GDIFontInstance(GDISurface *surface, const char *faceName, le_i
         fUnitsPerEM   = SWAPW(headTable->unitsPerEm);
         freeFontTable((const void *)headTable);
 
-        hheaTable = (HHEATable *) readFontTable(LE_HHEA_TABLE_TAG);
+        hheaTable = (HHEATable *) readFontTable(LE_HHEA_TABLE_TAG, length);
 
-        if (hheaTable == NULL) {
+        if (hheaTable == NULL || length < sizeof(HHEATable)) {
             status = LE_MISSING_FONT_TABLE_ERROR;
             goto restore;
         }
@@ -323,9 +325,10 @@ GDIFontInstance::~GDIFontInstance()
 LEErrorCode GDIFontInstance::initMapper()
 {
     LETag cmapTag = LE_CMAP_TABLE_TAG;
-    const CMAPTable *cmap = (const CMAPTable *) readFontTable(cmapTag);
+    size_t length;
+    const CMAPTable *cmap = (const CMAPTable *) readFontTable(cmapTag, length);
 
-    if (cmap == NULL) {
+    if (cmap == NULL || length < sizeof(CMAPTable)) {
         return LE_MISSING_FONT_TABLE_ERROR;
     }
 
@@ -338,12 +341,12 @@ LEErrorCode GDIFontInstance::initMapper()
     return LE_NO_ERROR;
 }
 
-const void *GDIFontInstance::getFontTable(LETag tableTag) const
+const void *GDIFontInstance::getFontTable(LETag tableTag, size_t &length) const
 {
-    return FontTableCache::find(tableTag);
+    return FontTableCache::find(tableTag, length);
 }
 
-const void *GDIFontInstance::readFontTable(LETag tableTag) const
+const void *GDIFontInstance::readFontTable(LETag tableTag, size_t &length) const
 {
     fSurface->setFont(this);
 
@@ -352,9 +355,12 @@ const void *GDIFontInstance::readFontTable(LETag tableTag) const
     DWORD len    = GetFontData(hdc, stag, 0, NULL, 0);
     void *result = NULL;
 
-    if (len != GDI_ERROR) {
+    if (len == GDI_ERROR) {
+        length = 0;
+    } else {
         result = LE_NEW_ARRAY(char, len);
         GetFontData(hdc, stag, 0, result, len);
+        length = len;
     }
 
     return result;
