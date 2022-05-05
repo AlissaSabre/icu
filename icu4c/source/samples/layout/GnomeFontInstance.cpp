@@ -188,7 +188,7 @@ le_bool GnomeFontInstance::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, 
 void GnomeFontInstance::rasterizeGlyphs(cairo_t *cairo, const LEGlyphID *glyphs, le_int32 glyphCount, const float *positions,
                                         le_int32 x, le_int32 y) const
 {
-    cairo_glyph_t *glyph_t = LE_NEW_ARRAY(cairo_glyph_t, glyphCount);
+  cairo_glyph_t *glyph_t = LE_NEW_ARRAY(cairo_glyph_t, (size_t)glyphCount);
     le_int32 in, out;
     
     for (in = 0, out = 0; in < glyphCount; in += 1) {

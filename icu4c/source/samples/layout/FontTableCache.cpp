@@ -26,7 +26,7 @@ struct FontTableCacheEntry
 FontTableCache::FontTableCache()
     : fTableCacheCurr(0), fTableCacheSize(TABLE_CACHE_INIT)
 {
-    fTableCache = LE_NEW_ARRAY(FontTableCacheEntry, fTableCacheSize);
+    fTableCache = LE_NEW_ARRAY(FontTableCacheEntry, (size_t)fTableCacheSize);
 
     if (fTableCache == NULL) {
         fTableCacheSize = 0;

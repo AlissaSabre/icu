@@ -108,7 +108,7 @@ const UChar *UnicodeReader::readFile(const char *fileName, GUISupport *guiSuppor
     delete[] byteBuffer;
     
     charCount = myText.length();
-    charBuffer = LE_NEW_ARRAY(UChar, charCount + 1);
+    charBuffer = LE_NEW_ARRAY(UChar, (size_t)charCount + 1);
     if(charBuffer == 0) {
         sprintf(errorMessage,"Couldn't get memory for reading %s: %s \n", fileName, strerror(errno));
         guiSupport->postErrorMessage(errorMessage, "Text File Error");
