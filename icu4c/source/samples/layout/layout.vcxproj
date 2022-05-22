@@ -37,7 +37,7 @@
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\..\include\layout;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINVER=0x0601;_WIN32_WINNT=0x0601;NDEBUG;_CONSOLE;WIN32;UNICODE;_CRT_SECURE_NO_DEPRECATE;LE_USE_CMEMORY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINVER=0x0601;_WIN32_WINNT=0x0601;NDEBUG;_CONSOLE;WIN32;UNICODE;_CRT_SECURE_NO_DEPRECATE;LE_USE_CMEMORY;U_USING_ICU_NAMESPACE;U_DEFINE_FALSE_AND_TRUE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -57,7 +57,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\iculx.lib;..\..\..\lib\icule.lib;..\..\..\lib\icuuc.lib;..\..\..\lib\icuin.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\lib\iculx.lib;..\..\..\lib\icu-le-hb.lib;..\..\..\lib\icuuc.lib;..\..\..\lib\icuin.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\x86\Release/layout.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ProgramDatabaseFile>.\x86\Release/layout.pdb</ProgramDatabaseFile>
@@ -74,7 +74,7 @@
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\..\include\layout;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN64;WIN32;UNICODE;_CRT_SECURE_NO_DEPRECATE;LE_USE_CMEMORY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN64;WIN32;UNICODE;_CRT_SECURE_NO_DEPRECATE;LE_USE_CMEMORY;U_USING_ICU_NAMESPACE;U_DEFINE_FALSE_AND_TRUE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -94,7 +94,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\..\..\lib64\iculx.lib;..\..\..\lib64\icule.lib;..\..\..\lib64\icuuc.lib;..\..\..\lib64\icuin.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\lib64\iculx.lib;..\..\..\lib64\icu-le-hb.lib;..\..\..\lib64\icuuc.lib;..\..\..\lib64\icuin.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\x64\Release/layout.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ProgramDatabaseFile>.\x64\Release/layout.pdb</ProgramDatabaseFile>
@@ -111,7 +111,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\..\include\layout;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINVER=0x0601;_WIN32_WINNT=0x0601;_DEBUG;WIN32;UNICODE;LE_USE_CMEMORY;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINVER=0x0601;_WIN32_WINNT=0x0601;_DEBUG;WIN32;UNICODE;LE_USE_CMEMORY;_CRT_SECURE_NO_DEPRECATE;U_USING_ICU_NAMESPACE;U_DEFINE_FALSE_AND_TRUE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -131,7 +131,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\iculxd.lib;..\..\..\lib\iculed.lib;..\..\..\lib\icuucd.lib;..\..\..\lib\icuind.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\lib\iculxd.lib;..\..\..\lib\icu-le-hb.lib;..\..\..\lib\icuucd.lib;..\..\..\lib\icuind.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\x86\Debug/layout.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -149,7 +149,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\include;..\..\..\include\layout;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN64;WIN32;UNICODE;LE_USE_CMEMORY;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN64;WIN32;UNICODE;LE_USE_CMEMORY;_CRT_SECURE_NO_DEPRECATE;U_USING_ICU_NAMESPACE;U_DEFINE_FALSE_AND_TRUE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -169,7 +169,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>..\..\..\lib64\iculxd.lib;..\..\..\lib64\iculed.lib;..\..\..\lib64\icuucd.lib;..\..\..\lib64\icuind.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\lib64\iculxd.lib;..\..\..\lib64\icu-le-hb.lib;..\..\..\lib64\icuucd.lib;..\..\..\lib64\icuind.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\x64\Debug/layout.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
