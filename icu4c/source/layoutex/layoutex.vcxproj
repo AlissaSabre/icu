@@ -55,7 +55,7 @@
     </ClCompile>
     <Link>
       <OutputFile>..\..\bin\iculx$(IcuMajorVersion).dll</OutputFile>
-      <AdditionalDependencies>icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>icu-le-hb.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\..\..\lib\iculx.pdb</ProgramDatabaseFile>
       <DataExecutionPrevention>
@@ -80,7 +80,7 @@
     </ClCompile>
     <Link>
       <OutputFile>..\..\bin\iculx$(IcuMajorVersion)d.dll</OutputFile>
-      <AdditionalDependencies>icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>icu-le-hb.lib;icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\..\..\lib\iculxd.pdb</ProgramDatabaseFile>
@@ -105,7 +105,7 @@
     </ClCompile>
     <Link>
       <OutputFile>..\..\bin64\iculx$(IcuMajorVersion).dll</OutputFile>
-      <AdditionalDependencies>icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>icu-le-hb.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\..\..\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\..\..\lib64\iculx.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\lib64\iculx.lib</ImportLibrary>
@@ -128,7 +128,7 @@
     </ClCompile>
     <Link>
       <OutputFile>..\..\bin64\iculx$(IcuMajorVersion)d.dll</OutputFile>
-      <AdditionalDependencies>icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>icu-le-hb.lib;icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>.\..\..\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\..\..\lib64\iculxd.pdb</ProgramDatabaseFile>
@@ -211,12 +211,6 @@
     <ResourceCompile Include="layoutex.rc">
       <AdditionalIncludeDirectories>..\common</AdditionalIncludeDirectories>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\layout\layout.vcxproj">
-      <Project>{c920062a-0647-4553-a3b2-37c58065664b}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
